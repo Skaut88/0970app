@@ -1,18 +1,9 @@
 import { NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
-
-const Profile = () => {
-  return <h1>Эта страница с профилем</h1>;
-};
-const Messages = () => {
-  return <h1>Эта страница с сообщениями</h1>;
-};
-const Settings = () => {
-  return <h1>Эта страница с настройками</h1>;
-};
-const Shop = () => {
-  return <h1>Магазин</h1>;
-};
+import { Profile } from "./components/Profile";
+import { Messages } from "./components/Message";
+import { Settings } from "./components/Settings";
+import { Shop } from "./components/Shop";
 
 function App() {
   return (
