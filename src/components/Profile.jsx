@@ -1,22 +1,22 @@
 import styles from "./Profile.module.css";
 
 export const Profile = (props) => {
-  let user = props.function();
+  let userId = location.pathname.split("/")[2];
+  let user = props.function(userId);
   return (
     <div className="row">
       <div className="col-sm-4">
-        <img
-          src={user.avatar}
-          alt=""
-          width="100%"
-        />
+        <img src={user.avatar} alt="" width="100%" />
       </div>
       <div className="col-sm-8">
         <h2 className={styles.id}>
           ID: <span>{user.id}</span>
         </h2>
         <h2 className={styles.name}>
-          Фамилия и имя: <span>{user.lastname} {user.name}</span>
+          Фамилия и имя:{" "}
+          <span>
+            {user.lastname} {user.name}
+          </span>
         </h2>
         <p className={styles.mail}>
           Email: <span>{user.email}</span>{" "}

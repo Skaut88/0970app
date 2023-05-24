@@ -1,9 +1,16 @@
+import { NavLink } from "react-router-dom";
+import rowImg from "../assets/img/sea.jpg";
+
 const TableRow = (props) => {
   return (
     <tr>
-      <th scope="row"></th>
-      <td>{props.lastname}</td>
-      <td>{props.name}</td>
+      <th scope="row">{props.index + 1}</th>
+      <td>
+        <NavLink to={"/Profile/" + props.id}>
+          {props.lastname} {props.name}
+        </NavLink>
+      </td>
+      <td>{props.email}</td>
     </tr>
   );
 };
@@ -13,7 +20,16 @@ export const Messages = (props) => {
   let usersCount = Object.keys(users).length;
   let userRow = [];
   for (let i = 0; i < usersCount; i++) {
-    userRow.push(<TableRow index={i} key={i} name={users[i].name} lastname={users[i].lastname} />)
+    userRow.push(
+      <TableRow
+        id={users[i].id}
+        index={i}
+        key={i}
+        name={users[i].name}
+        lastname={users[i].lastname}
+        email={users[i].email}
+      />
+    );
   }
   return (
     <>
@@ -23,14 +39,17 @@ export const Messages = (props) => {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Фамилия</th>
-              <th scope="col">Имя</th>
+              <th scope="col">ФИО</th>
+              <th scope="col">E-mail</th>
             </tr>
           </thead>
-          <tbody>
-            {userRow}
-          </tbody>
+          <tbody>{userRow}</tbody>
         </table>
+      </div>
+      <div className="row">
+        <div className="col-6">
+          <img src={rowImg} alt="" />
+        </div>
       </div>
     </>
   );
